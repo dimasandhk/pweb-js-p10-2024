@@ -16,3 +16,11 @@
     margin-top: 20px;
     font-size: 22px;
 }
+
+.featured-prod {
+    padding: 50px 0 50px 100px;
+}
+
+.featured-prod h3 {
+    font-size: 32px;
+}
