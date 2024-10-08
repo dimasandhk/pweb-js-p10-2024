@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #a5a5a5;
+    background-color: burlywood;
     padding: 200px 400px;
 }
 
@@ -22,11 +22,105 @@
 }
 
 .featured-prod {
-    padding: 50px 0 50px 100px;
+    padding: 50px 0 50px 0;
 }
 
 .featured-prod h3 {
+    padding: 0 0 0 100px;
     font-size: 32px;
+}
+
+/* aaaaaaaaaaaaaaaaaaaaaa */
+.f-prods {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px 20px;
+    justify-content: center;
+}
+
+.card {
+    flex: 1 1 calc(25% - 40px);
+    max-width: calc(25% - 40px);
+    background-color: rgb(185, 154, 115);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.tag {
+    font: Arial, sans-serif;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: burlywood;
+    color: white;
+    padding: 10px 10px;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-info h2 {
+    font-size: 18px;
+    color: white;
+    text-align: left;
+    width: 100%;
+}
+
+.price {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 10px 0;
+    text-align: left;
+    width: 100%;
+}
+
+.rating {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.buy-btn {
+    background-color: transparent;
+    color: black;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    align-self: stretch;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.buy-btn:hover {
+    background-color: black;
+    color: burlywood;
 }
 
 @media (max-width: 1111px) {
@@ -49,11 +143,24 @@
     }
 
     .featured-prod {
-        padding: 50px 0 50px 50px;
+        padding: 50px 30px 50px 30px;
     }
 
     .featured-prod h3 {
         font-size: 28px;
+        padding: 0;
         text-align: center;
+    }
+
+    .card {
+        flex: 1 1 calc(50% - 40px);
+        max-width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 }
