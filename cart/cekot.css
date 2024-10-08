@@ -59,6 +59,9 @@ body {
 .quantity-delete {
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: end;
+    margin-top: 10px;
 }
 
 .delete-btn {
@@ -72,6 +75,26 @@ body {
 
 .delete-btn:hover {
     background-color: darkred;
+}
+
+.decrease-btn,
+.increase-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.decrease-btn:hover,
+.increase-btn:hover {
+    background-color: #ccc;
+}
+
+.quantity-text {
+    margin: 0 10px;
+    font-size: 1em;
 }
 
 .total {
@@ -130,5 +153,14 @@ body {
         width: 100%;
         justify-content: space-between;
         margin-top: 10px;
+    }
+
+    .decrease-btn,
+    .increase-btn {
+        padding: 5px;
+    }
+
+    .quantity-text {
+        font-size: 0.9em;
     }
 }

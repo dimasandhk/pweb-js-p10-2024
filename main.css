@@ -17,6 +17,42 @@ footer {
     background-color: #a5a5a5;
 }
 
+.toast {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: #4caf50;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@media (max-width: 600px) {
+    .toast {
+        right: 0.5rem;
+        left: 0.5rem;
+        bottom: 0.5rem;
+        font-size: 12px;
+        padding: 12px;
+    }
+}
+
 .btn {
     display: inline-block;
     color: black;
@@ -84,7 +120,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* !Menu mobile */
 .menu-container {
     position: fixed;
     height: 100vh;

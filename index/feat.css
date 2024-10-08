@@ -115,7 +115,7 @@
     cursor: pointer;
     align-self: stretch;
     text-align: center;
-    transition: background-color 0.3s;
+    font-weight: 700;
 }
 
 .buy-btn:hover {
