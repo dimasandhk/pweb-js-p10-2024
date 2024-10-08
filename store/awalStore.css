@@ -1,0 +1,34 @@
+.awal-pilih {
+    padding: 150px 100px;
+}
+
+.awal-pilih h3 {
+    font-size: 36px;
+}
+
+.awal-pilih .breadcrumb {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.prod-cat {
+    margin-top: 20px;
+}
+
+.prod-cat button {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .awal-pilih {
+        padding: 150px 50px;
+    }
+
+    .awal-pilih h3 {
+        font-size: 28px;
+    }
+
+    .prod-cat {
+        margin-top: 10px;
+    }
+}

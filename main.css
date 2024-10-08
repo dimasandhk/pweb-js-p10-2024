@@ -13,7 +13,7 @@ body {
 
 footer {
     text-align: center;
-    padding: 20px 0;
+    padding: 20px 20px;
     background-color: #a5a5a5;
 }
 
@@ -26,6 +26,11 @@ footer {
     border: 2px solid white;
     border-radius: 20px;
     font-weight: bold;
+}
+
+.active {
+    color: burlywood;
+    background-color: rgb(41, 41, 41);
 }
 
 .navbar {
