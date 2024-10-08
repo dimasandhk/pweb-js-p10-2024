@@ -28,3 +28,32 @@
 .featured-prod h3 {
     font-size: 32px;
 }
+
+@media (max-width: 1111px) {
+    .hero {
+        padding: 200px 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 200px 50px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .featured-prod {
+        padding: 50px 0 50px 50px;
+    }
+
+    .featured-prod h3 {
+        font-size: 28px;
+        text-align: center;
+    }
+}

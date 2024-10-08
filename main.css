@@ -8,7 +8,7 @@
 
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f0f3f8;
 }
 
 footer {
@@ -26,6 +26,7 @@ footer {
     border: 2px solid white;
     border-radius: 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .active {
@@ -44,6 +45,8 @@ footer {
     z-index: 2;
     height: 70px;
 }
+
+/* #cartCounter {} */
 
 .logo img {
     width: 100px;
@@ -97,6 +100,12 @@ footer {
 
 .menu-container.active {
     transform: translateX(0);
+}
+
+@media (max-width: 495px) {
+    .btn {
+        padding: 13px 20px;
+    }
 }
 
 @media (max-width: 968px) {
