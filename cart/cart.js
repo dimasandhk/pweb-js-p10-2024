@@ -1,6 +1,7 @@
 const totalCounter = document.querySelector(".total p");
 const cartContainer = document.querySelector(".items");
 const cartCounter = document.querySelector(".cartCounter");
+const btnCheckout = document.querySelector(".btn-cekot");
 
 let productData = {};
 
@@ -121,5 +122,16 @@ async function fetchProductData() {
     updateTotalPrice();
     renderCartItems();
 }
+
+function clearCart() {
+    localStorage.removeItem("cart");
+    updateCartCounter();
+    updateTotalPrice();
+    renderCartItems();
+}
+
+btnCheckout.addEventListener("click", () => {
+    clearCart();
+});
 
 fetchProductData();

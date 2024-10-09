@@ -119,6 +119,10 @@ body {
     color: #555;
 }
 
+.wik {
+    font-size: 22px;
+}
+
 @media (max-width: 768px) {
     .awal-cekot {
         padding: 150px 50px;
