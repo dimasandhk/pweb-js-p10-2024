@@ -112,10 +112,22 @@ async function fetchProductData() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const productIds = cart.map((item) => item.id);
 
-    for (const id of productIds) {
-        const response = await fetch(`https://dummyjson.com/products/${id}`);
-        const product = await response.json();
-        productData[id] = product;
+    try {
+        for (const id of productIds) {
+            const response = await fetch(
+                `https://dummyjson.com/products/${id}`
+            );
+            if (!response.ok) {
+                throw new Error(
+                    `Error: ${response.status} ${response.statusText}`
+                );
+            }
+            const product = await response.json();
+            productData[id] = product;
+        }
+    } catch (error) {
+        console.error("Error fetching product data:", error);
+        alert("Failed to load product data. Please try again later.");
     }
 
     updateCartCounter();
