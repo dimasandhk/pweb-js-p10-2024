@@ -54,6 +54,16 @@ footer {
     font-size: 18px;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#pageInfo {
+    margin: 20px;
+}
+
 .toast.show {
     opacity: 1;
     visibility: visible;

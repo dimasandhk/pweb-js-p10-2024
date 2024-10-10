@@ -10,6 +10,10 @@ const fragrance = document.querySelector(".frag"); // /fragrances
 const smartphones = document.querySelector(".smart"); // /smartphones
 const dropdown = document.querySelector(".dd"); // Dropdown for limit
 
+const prevPageBtn = document.getElementById("prevPageBtn");
+const nextPageBtn = document.getElementById("nextPageBtn");
+const pageInfo = document.getElementById("pageInfo");
+
 const categoryButtons = [
     all,
     beauty,
@@ -20,12 +24,18 @@ const categoryButtons = [
     smartphones,
 ];
 
-async function fetchProducts(category, limit = 30) {
+let currentPage = 1;
+let totalPages = 1;
+let currentCategory = "all";
+
+// Function to fetch products and display them
+async function fetchProducts(category, limit = 30, page = 1) {
     try {
+        const skip = (page - 1) * limit;
         const url =
             category === "all"
-                ? `https://dummyjson.com/products?limit=${limit}`
-                : `https://dummyjson.com/products/category/${category}`;
+                ? `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
+                : `https://dummyjson.com/products/category/${category}?limit=${limit}&skip=${skip}`;
 
         const response = await fetch(url);
 
@@ -61,30 +71,20 @@ async function fetchProducts(category, limit = 30) {
                 addToCart(productId);
             });
         });
+
+        currentPage = page;
+        totalPages = Math.ceil(data.total / limit);
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+        prevPageBtn.disabled = currentPage === 1;
+        nextPageBtn.disabled = currentPage === totalPages;
     } catch (error) {
         console.error("Error fetching products:", error);
         alert("Failed to load products. Please try again later.");
     }
 }
 
-const backToTopBtn = document.getElementById("backToTopBtn");
-
-window.onscroll = function () {
-    if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-    ) {
-        backToTopBtn.style.display = "block";
-    } else {
-        backToTopBtn.style.display = "none";
-    }
-};
-
-backToTopBtn.addEventListener("click", function () {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-});
-
+// Function to show toast message
 function showToast(message) {
     const toast = document.getElementById("toast");
     toast.textContent = message;
@@ -97,6 +97,7 @@ function showToast(message) {
     }, 3000);
 }
 
+// Function to add product to cart
 function addToCart(productId) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -117,10 +118,12 @@ function addToCart(productId) {
     updateCartCounter(cart.reduce((acc, item) => acc + item.quantity, 0));
 }
 
+// Function to update cart counter
 function updateCartCounter(count) {
     cartCounter.textContent = `Keranjang Kuning (${count})`;
 }
 
+// Function to render cart items
 async function renderCartItems() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartContainer = document.querySelector(".items");
@@ -161,19 +164,23 @@ async function renderCartItems() {
     }
 }
 
+// Function to set active category button
 function setActiveCategoryButton(activeButton) {
     categoryButtons.forEach((button) => button.classList.remove("active"));
     activeButton.classList.add("active");
 }
 
+// Function to handle category selection
 function handleCategorySelection(category, button) {
     setActiveCategoryButton(button);
+    currentCategory = category;
+    currentPage = 1;
     if (category === "all") {
         dropdown.style.display = "inline-block";
-        fetchProducts(category, dropdown.value);
+        fetchProducts(category, dropdown.value, currentPage);
     } else {
         dropdown.style.display = "none";
-        fetchProducts(category);
+        fetchProducts(category, dropdown.value, currentPage);
     }
 }
 
@@ -182,9 +189,11 @@ const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 updateCartCounter(totalItems);
 renderCartItems();
 
-fetchProducts("all", dropdown.value);
+// Fetch products for the default category (all) on page load
+fetchProducts("all", dropdown.value, currentPage);
 setActiveCategoryButton(all);
 
+// Add event listeners to category buttons
 all.addEventListener("click", () => handleCategorySelection("all", all));
 beauty.addEventListener("click", () =>
     handleCategorySelection("beauty", beauty)
@@ -205,8 +214,43 @@ smartphones.addEventListener("click", () =>
     handleCategorySelection("smartphones", smartphones)
 );
 
+// Add event listener to dropdown
 dropdown.addEventListener("change", () => {
     if (all.classList.contains("active")) {
-        fetchProducts("all", dropdown.value);
+        fetchProducts("all", dropdown.value, currentPage);
     }
+});
+
+// Add event listeners to pagination buttons
+prevPageBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+        fetchProducts(currentCategory, dropdown.value, currentPage - 1);
+    }
+});
+
+nextPageBtn.addEventListener("click", () => {
+    if (currentPage < totalPages) {
+        fetchProducts(currentCategory, dropdown.value, currentPage + 1);
+    }
+});
+
+// Back to Top Button
+const backToTopBtn = document.getElementById("backToTopBtn");
+
+// Show or hide the button based on scroll position
+window.onscroll = function () {
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+};
+
+// Scroll to the top of the document when the button is clicked
+backToTopBtn.addEventListener("click", function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 });
