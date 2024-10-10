@@ -28,7 +28,6 @@ let currentPage = 1;
 let totalPages = 1;
 let currentCategory = "all";
 
-// Function to fetch products and display them
 async function fetchProducts(category, limit = 30, page = 1) {
     try {
         const skip = (page - 1) * limit;
@@ -84,7 +83,6 @@ async function fetchProducts(category, limit = 30, page = 1) {
     }
 }
 
-// Function to show toast message
 function showToast(message) {
     const toast = document.getElementById("toast");
     toast.textContent = message;
@@ -97,7 +95,6 @@ function showToast(message) {
     }, 3000);
 }
 
-// Function to add product to cart
 function addToCart(productId) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -118,12 +115,10 @@ function addToCart(productId) {
     updateCartCounter(cart.reduce((acc, item) => acc + item.quantity, 0));
 }
 
-// Function to update cart counter
 function updateCartCounter(count) {
     cartCounter.textContent = `Keranjang Kuning (${count})`;
 }
 
-// Function to render cart items
 async function renderCartItems() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartContainer = document.querySelector(".items");
@@ -164,13 +159,11 @@ async function renderCartItems() {
     }
 }
 
-// Function to set active category button
 function setActiveCategoryButton(activeButton) {
     categoryButtons.forEach((button) => button.classList.remove("active"));
     activeButton.classList.add("active");
 }
 
-// Function to handle category selection
 function handleCategorySelection(category, button) {
     setActiveCategoryButton(button);
     currentCategory = category;
@@ -189,11 +182,9 @@ const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 updateCartCounter(totalItems);
 renderCartItems();
 
-// Fetch products for the default category (all) on page load
 fetchProducts("all", dropdown.value, currentPage);
 setActiveCategoryButton(all);
 
-// Add event listeners to category buttons
 all.addEventListener("click", () => handleCategorySelection("all", all));
 beauty.addEventListener("click", () =>
     handleCategorySelection("beauty", beauty)
@@ -214,14 +205,12 @@ smartphones.addEventListener("click", () =>
     handleCategorySelection("smartphones", smartphones)
 );
 
-// Add event listener to dropdown
 dropdown.addEventListener("change", () => {
     if (all.classList.contains("active")) {
         fetchProducts("all", dropdown.value, currentPage);
     }
 });
 
-// Add event listeners to pagination buttons
 prevPageBtn.addEventListener("click", () => {
     if (currentPage > 1) {
         fetchProducts(currentCategory, dropdown.value, currentPage - 1);
@@ -234,10 +223,8 @@ nextPageBtn.addEventListener("click", () => {
     }
 });
 
-// Back to Top Button
 const backToTopBtn = document.getElementById("backToTopBtn");
 
-// Show or hide the button based on scroll position
 window.onscroll = function () {
     if (
         document.body.scrollTop > 20 ||
@@ -249,7 +236,6 @@ window.onscroll = function () {
     }
 };
 
-// Scroll to the top of the document when the button is clicked
 backToTopBtn.addEventListener("click", function () {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
