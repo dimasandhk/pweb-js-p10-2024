@@ -58,119 +58,32 @@
             </div>
             <h3>Products 🛍️</h3>
             <div class="prod-cat">
-                <button class="btn">Beauty</button>
-                <button class="btn">Furniture</button>
-                <button class="btn">Groceries</button>
-                <button class="btn">Laptops</button>
-                <button class="btn">Smartphones</button>
+                <button class="btn all">All</button>
+                <button class="btn bty">Beauty</button>
+                <button class="btn furn">Furniture</button>
+                <button class="btn groc">Groceries</button>
+                <button class="btn lapt">Laptops</button>
+                <button class="btn frag">Fragarances</button>
+                <button class="btn smart">Smartphones</button>
             </div>
+            <select class="dd">
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
         </section>
 
         <section class="list-prods">
-            <div class="prods">
-                <div class="card">
-                    <div class="product-image">
-                        <img src="img/landyard.jpg" alt="Lanyard Arlo" />
-                        <span class="tag"><strong>Lanyard</strong></span>
-                    </div>
-                    <div class="product-info">
-                        <h2>Lanyard Arlo</h2>
-                        <p class="price">
-                            <strong>Rp10.000</strong>
-                        </p>
-                        <p class="rating">Rating: 4.5/5 ⭐</p>
-                        <button class="buy-btn">
-                            <strong>Beli</strong>
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="product-image">
-                        <img src="img/landyard.jpg" alt="Lanyard Arlo" />
-                        <span class="tag"><strong>Lanyard</strong></span>
-                    </div>
-                    <div class="product-info">
-                        <h2>Lanyard Arlo</h2>
-                        <p class="price">
-                            <strong>Rp10.000</strong>
-                        </p>
-                        <p class="rating">Rating: 4.5/5 ⭐</p>
-                        <button class="buy-btn">
-                            <strong>Beli</strong>
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="product-image">
-                        <img src="img/landyard.jpg" alt="Lanyard Arlo" />
-                        <span class="tag"><strong>Lanyard</strong></span>
-                    </div>
-                    <div class="product-info">
-                        <h2>Lanyard Arlo</h2>
-                        <p class="price">
-                            <strong>Rp10.000</strong>
-                        </p>
-                        <p class="rating">Rating: 4.5/5 ⭐</p>
-                        <button class="buy-btn">
-                            <strong>Beli</strong>
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="product-image">
-                        <img src="img/landyard.jpg" alt="Lanyard Arlo" />
-                        <span class="tag"><strong>Lanyard</strong></span>
-                    </div>
-                    <div class="product-info">
-                        <h2>Lanyard Arlo</h2>
-                        <p class="price">
-                            <strong>Rp10.000</strong>
-                        </p>
-                        <p class="rating">Rating: 4.5/5 ⭐</p>
-                        <button class="buy-btn">
-                            <strong>Beli</strong>
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="product-image">
-                        <img src="img/landyard.jpg" alt="Lanyard Arlo" />
-                        <span class="tag"><strong>Lanyard</strong></span>
-                    </div>
-                    <div class="product-info">
-                        <h2>Lanyard Arlo</h2>
-                        <p class="price">
-                            <strong>Rp10.000</strong>
-                        </p>
-                        <p class="rating">Rating: 4.5/5 ⭐</p>
-                        <button class="buy-btn">
-                            <strong>Beli</strong>
-                        </button>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="product-image">
-                        <img src="img/landyard.jpg" alt="Lanyard Arlo" />
-                        <span class="tag"><strong>Lanyard</strong></span>
-                    </div>
-                    <div class="product-info">
-                        <h2>Lanyard Arlo</h2>
-                        <p class="price">
-                            <strong>Rp10.000</strong>
-                        </p>
-                        <p class="rating">Rating: 4.5/5 ⭐</p>
-                        <button class="buy-btn">
-                            <strong>Beli</strong>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <div class="prods"></div>
         </section>
 
         <footer>
             P10 Toserba - gacuma produknya yang serba ada, tapi aku kan selalu
             ada untukmu
         </footer>
+
+        <div id="toast" class="toast hidden"></div>
+        <button id="backToTopBtn" class="back-to-top">⬆️ Back to Top</button>
 
         <script src="./main.js"></script>
         <script src="./store/main.js"></script>
